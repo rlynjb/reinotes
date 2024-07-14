@@ -1,5 +1,5 @@
-import { FC, useState, useEffect } from 'react';
-import { Editor } from '../ui/Editor';
+import { FC } from 'react';
+import { Editor } from '@/ui/Editor';
 
 
 interface Props {

@@ -1,7 +1,7 @@
 import {
   Table,
-} from "../ui"
-import { ViewNote } from '.';
+} from "@/ui"
+import { ViewNote } from '@/features';
 /*
 import {
   useI18nTranslate,

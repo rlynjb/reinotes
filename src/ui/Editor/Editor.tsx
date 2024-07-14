@@ -1,3 +1,5 @@
+"use client";
+
 // Importing helper modules
 import { useRef, useState, useEffect } from "react";
 
@@ -56,7 +58,9 @@ export const Editor = ({ defaultValue }: EditorProps) => {
 
   return (
     <QuillEditor
-      ref={(el) => (quill.current = el)}
+      ref={(el) => {
+        quill.current = el;
+      }}
       className={styles["editor"]}
       theme="snow"
       value={value}

@@ -1,3 +1,5 @@
+"use client";
+
 /**
  * Context API implement of BreadCrumbs
  * https://www.gcasc.io/blog/next-dynamic-breadcrumbs
