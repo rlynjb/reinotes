@@ -50,7 +50,7 @@ export default function Home() {
   */
 
   return (
-    <div className="container mx-auto mt-12 grid grid-cols-12 gap-4">
+    <div className="grid grid-cols-12 gap-4">
       {/**
       <div className="col-span-12">
         <Breadcrumbs />
