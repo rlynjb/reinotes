@@ -6,7 +6,7 @@ import {
   useBreadcrumbs,
 } from "@/ui"
 import { notesNav } from '@/constants';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ViewChapterNotes } from '@/features';
 
 
@@ -48,6 +48,10 @@ export default function Home() {
     }
   ])
   */
+
+  useEffect(() => {
+    console.log('selected - chapter', selected)
+  }, [selected])
 
   return (
     <div className="grid grid-cols-12 gap-4">

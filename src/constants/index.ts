@@ -44,30 +44,87 @@ interface INoteData {
 
 export const notesNav: INavItems = {
   "React 18 Design Patterns and Best Practices": [
-    { id: 'react-c3', title: 'Cleaning up code', data: C3_CLEANING_CODE },
-    { id: 'react-c4', title: 'Exploring Popular Composition Patterns', data: C4_POPULAR_COMPOSITION },
-    { id: 'react-c5', title: 'Writing Code for the Browser', data: C5_WRITING_CODE_FOR_THE_BROWSER },
-    { id: 'react-c7', title: 'Anti-Patterns to be Avoided', data: C7_ANTIPATTERNS_TO_BE_AVOIDED },
-    { id: 'react-c8', title: 'React Hooks', data: C8_REACT_HOOKS },
-    { id: 'react-c9', title: 'React Router', data: C9_REACT_ROUTER },
-    { id: 'react-c10', title: 'React 18 New Features', data: C10_REACT_18_NEW_FEATURES },
-    { id: 'react-c11', title: 'Managing Data', data: C11_MANAGING_DATA},
-    { id: 'react-c12', title: 'Server-side Rendering', data: C12_SERVER_SIDE_RENDERING },
-    { id: 'react-c13', title: 'Understanding GraphQL', data: C13_UNDERSTANDING_GRAPHQL }
+    {
+      id: 'react-c3', book: 'React 18 Design Patterns and Best Practices',
+      title: 'Cleaning up code', data: C3_CLEANING_CODE
+    },
+    {
+      id: 'react-c4', book: 'React 18 Design Patterns and Best Practices',
+      title: 'Exploring Popular Composition Patterns', data: C4_POPULAR_COMPOSITION
+    },
+    {
+      id: 'react-c5', book: 'React 18 Design Patterns and Best Practices',
+      title: 'Writing Code for the Browser', data: C5_WRITING_CODE_FOR_THE_BROWSER
+    },
+    {
+      id: 'react-c7', book: 'React 18 Design Patterns and Best Practices',
+      title: 'Anti-Patterns to be Avoided', data: C7_ANTIPATTERNS_TO_BE_AVOIDED
+    },
+    {
+      id: 'react-c8', book: 'React 18 Design Patterns and Best Practices',
+      title: 'React Hooks', data: C8_REACT_HOOKS
+    },
+    {
+      id: 'react-c9', book: 'React 18 Design Patterns and Best Practices',
+      title: 'React Router', data: C9_REACT_ROUTER
+    },
+    {
+      id: 'react-c10', book: 'React 18 Design Patterns and Best Practices',
+      title: 'React 18 New Features', data: C10_REACT_18_NEW_FEATURES
+    },
+    {
+      id: 'react-c11', book: 'React 18 Design Patterns and Best Practices',
+      title: 'Managing Data', data: C11_MANAGING_DATA
+    },
+    {
+      id: 'react-c12', book: 'React 18 Design Patterns and Best Practices',
+      title: 'Server-side Rendering', data: C12_SERVER_SIDE_RENDERING
+    },
+    {
+      id: 'react-c13', book: 'React 18 Design Patterns and Best Practices',
+      title: 'Understanding GraphQL', data: C13_UNDERSTANDING_GRAPHQL
+    }
   ],
   "Beginning GraphQL with React, NodeJS, and Apollo": [
-    { id: 'graphql-c1', title: 'Introduction to GraphQL', data: C1 },
-    { id: 'graphql-c2', title: 'Setting up our Todo App', data: C2 },
-    { id: 'graphql-c3', title: 'Specifying our Schema', data: C3 },
-    { id: 'graphql-c4', title: 'GraphQL Queries', data: C4 },
-    { id: 'graphql-c5', title: 'Using MongoDB as our Database', data: C5 },
+    {
+      id: 'graphql-c1', book: 'Beginning GraphQL with React, NodeJS, and Apollo',
+      title: 'Introduction to GraphQL', data: C1
+    },
+    {
+      id: 'graphql-c2', book: 'Beginning GraphQL with React, NodeJS, and Apollo',
+      title: 'Setting up our Todo App', data: C2
+    },
+    {
+      id: 'graphql-c3', book: 'Beginning GraphQL with React, NodeJS, and Apollo',
+      title: 'Specifying our Schema', data: C3
+    },
+    {
+      id: 'graphql-c4', book: 'Beginning GraphQL with React, NodeJS, and Apollo',
+      title: 'GraphQL Queries', data: C4
+    },
+    {
+      id: 'graphql-c5', book: 'Beginning GraphQL with React, NodeJS, and Apollo',
+      title: 'Using MongoDB as our Database', data: C5
+    },
   ],
   "Testing JavaScript Applications": [
-    { id: 'testing-c1', title: 'An introduction to automated testing', data: C1_INTRO_TO_AUTOMATED_TESTING },
-    { id: 'testing-c2', title: 'What to test and when?', data: C2_WHAT_TO_TEST_AND_WHEN},
-    { id: 'testing-c3', title: 'Testing techniques', data: C3_TESTING_TECHNIQUES}
+    {
+      id: 'testing-c1', book: 'Testing JavaScript Applications',
+      title: 'An introduction to automated testing', data: C1_INTRO_TO_AUTOMATED_TESTING
+    },
+    {
+      id: 'testing-c2', book: 'Testing JavaScript Applications',
+      title: 'What to test and when?', data: C2_WHAT_TO_TEST_AND_WHEN
+    },
+    {
+      id: 'testing-c3', book: 'Testing JavaScript Applications',
+      title: 'Testing techniques', data: C3_TESTING_TECHNIQUES
+    }
   ],
   "A Common-Sense Guide to Data Structures and Algorithms": [
-    { id: '', title: 'Sample Title', data: [] },
+    {
+      id: '', book: 'A Common-Sense Guide to Data Structures and Algorithms',
+      title: 'Sample Title', data: []
+    },
   ]
 }

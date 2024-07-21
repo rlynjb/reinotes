@@ -19,6 +19,7 @@ export interface INavItems {
 export interface INavItemsValue {
   id: string
   title: string
+  book?: string
   data: any[]
 }
 
