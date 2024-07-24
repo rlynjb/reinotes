@@ -1,12 +1,14 @@
 "use client";
 
 import {
-  MenuWithTitle,
-  Breadcrumbs,
-  useBreadcrumbs,
+  MenuWithTitle
 } from "@/ui"
+import {
+  Breadcrumb,
+  useBreadcrumbs,
+} from "@/utils/breadcrumb";
 import { notesNav } from '@/constants';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { ViewChapterNotes } from '@/features';
 
 
@@ -36,7 +38,6 @@ export default function Home() {
   const initialSelected = Object.values(notesNav)[0][0] // get first item in an object
   const [selected, setSelected] = useState(initialSelected)
 
-  /*
   useBreadcrumbs([
     {
       label: 'Home',
@@ -47,19 +48,13 @@ export default function Home() {
       link: '/cheatsheets'
     }
   ])
-  */
 
-  useEffect(() => {
-    console.log('selected - chapter', selected)
-  }, [selected])
 
   return (
     <div className="grid grid-cols-12 gap-4">
-      {/**
       <div className="col-span-12">
-        <Breadcrumbs />
+        <Breadcrumb />
       </div>
-      */}
 
       <div className="col-span-3">
         <MenuWithTitle

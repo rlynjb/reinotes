@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext, useEffect, useRef } from 'react';
-import { BreadcrumbsContext } from './Breadcrumbs';
+import { BreadcrumbsContext } from './breadcrumb';
 
 export const useBreadcrumbs = (pathItems?: any[]) => {
   const context = useContext(BreadcrumbsContext);

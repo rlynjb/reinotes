@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { BreadcrumbsProvider } from "@/utils/breadcrumb";
+
 
 export const metadata: Metadata = {
   title: "Study Aid app",
@@ -13,8 +15,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-theme="dark">
-      <body className="container mx-auto mt-12">
-        {children}
+      <body
+        suppressHydrationWarning={true}
+        className="container mx-auto mt-12"
+      >
+        <BreadcrumbsProvider>
+          {children}
+        </BreadcrumbsProvider>
       </body>
     </html>
   );

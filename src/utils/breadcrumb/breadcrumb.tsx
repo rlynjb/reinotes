@@ -1,40 +1,49 @@
 "use client";
 
+/**
+ * Context API implement of BreadCrumbs
+ * https://www.gcasc.io/blog/next-dynamic-breadcrumbs
+ */
+
 import {
-  createContext,
   FC,
-  ReactNode
-} from 'react';
+  createContext,
+  useState,
+  ReactNode,
+} from "react";
 
 
-interface BreadcrumbContextProps {
-  items: any[],
-  setItems: any
+interface itemsProps {
+  label: string
+  link?: string
 }
 
-interface BreadcrumbProviderProps {
-  children?: ReactNode,
-  items?: any[],
-  setItems?: any
+interface BreadcrumbsContextProps {
+  pathItems: itemsProps[]
+  setPathItems: (items: itemsProps[]) => void
+}
+
+interface BreadcrumbsProviderProps {
+  children?: ReactNode
 }
 
 
-export const BreadcrumbContext = createContext<BreadcrumbContextProps>({
-  items: [],
-  setItems: () => {}
-});
+export const BreadcrumbsContext = createContext<BreadcrumbsContextProps>({
+  pathItems: [],
+  setPathItems: (items: itemsProps[]) => {}
+})
 
+export const BreadcrumbsProvider: FC<BreadcrumbsProviderProps> = ({ children }) => {
+  const [ pathItems, setPathItems] = useState<any[]>([])
 
-export const BreadcrumbProvider: FC<BreadcrumbProviderProps> = ({ children, items }) => {
-  console.log(items)
   const context = {
-    items: [],
-    setItems: () => {}
+    pathItems,
+    setPathItems,
   }
 
   return (
-    <BreadcrumbContext.Provider value={context}>
-      { children }
-    </BreadcrumbContext.Provider>
+    <BreadcrumbsContext.Provider value={context}>
+      {children}
+    </BreadcrumbsContext.Provider>
   )
 }
