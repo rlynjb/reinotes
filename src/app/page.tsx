@@ -1,15 +1,12 @@
-"use client";
+"use client"
 
 import {
-  MenuWithTitle
-} from "@/ui"
-import {
-  Breadcrumb,
-  useBreadcrumbs,
+  UseBreadcrumb,
 } from "@/utils/breadcrumb";
 import { notesNav } from '@/constants';
-import { useState } from 'react';
 import { ViewChapterNotes } from '@/features';
+import { useRouter } from 'next/navigation'
+import { useEffect } from 'react';
 
 
 /**
@@ -35,38 +32,36 @@ import { ViewChapterNotes } from '@/features';
 
 
 export default function Home() {
+  const router = useRouter()
   const initialSelected = Object.values(notesNav)[0][0] // get first item in an object
-  const [selected, setSelected] = useState(initialSelected)
 
-  useBreadcrumbs([
+  useEffect(() => {
+    // redirect to first item in notesNav
+    router.push(`/${initialSelected.bookId}/${initialSelected.id}`)
+  }, [])
+  
+
+  const pathItems = [
     {
       label: 'Home',
       link: '/'
     },
     {
-      label: 'Notes',
-      link: '/cheatsheets'
+      label: initialSelected.book,
+      link: '/'
+    },
+    {
+      label: initialSelected.title,
+      link: '/'
     }
-  ])
+  ]
 
 
   return (
-    <div className="grid grid-cols-12 gap-4">
-      <div className="col-span-12">
-        <Breadcrumb />
-      </div>
+    <>
+      <UseBreadcrumb pathItems={pathItems} />
 
-      <div className="col-span-3">
-        <MenuWithTitle
-          navItems={notesNav}
-          initialItem={initialSelected}
-          selectedItem={(item: any) => setSelected(item)}
-        />
-      </div>
-
-      <div className="col-span-9">
-        <ViewChapterNotes selected={selected.data} />
-      </div>
-    </div>
+      <ViewChapterNotes selected={initialSelected.data} />
+    </>
   );
 }

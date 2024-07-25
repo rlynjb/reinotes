@@ -19,6 +19,7 @@ export interface INavItems {
 export interface INavItemsValue {
   id: string
   title: string
+  bookId?: string
   book?: string
   data: any[]
 }
@@ -57,7 +58,7 @@ export const MenuWithTitle: FC<Props> = ({navItems, initialItem, selectedItem}) 
       <ul className="menu menu-sm bg-base-200">
         {Object.keys(navItems).map((key: string) =>
           <li key={key}>
-            <h2 className="menu-title">{key}</h2>
+            <h2 className="menu-title">{navItems[key][0].book}</h2>
 
             {subMenu(navItems, key)}
           </li>

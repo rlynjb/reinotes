@@ -2,6 +2,7 @@
 
 import {
   useContext,
+  useEffect
 } from "react";
 import {
   Breadcrumbs
@@ -18,4 +19,14 @@ export const Breadcrumb = () => {
   return (
     <Breadcrumbs items={context.pathItems} />
   )
+}
+
+export const UseBreadcrumb = ({pathItems}: any) => {
+  const context = useContext(BreadcrumbsContext)
+
+  useEffect(() => {
+    context.setPathItems(pathItems || [])
+
+    return () => context.setPathItems([])
+  })
 }

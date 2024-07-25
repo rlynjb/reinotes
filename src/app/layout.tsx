@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { BreadcrumbsProvider } from "@/utils/breadcrumb";
+import {
+  MainLayout,
+} from "@/layouts/MainLayout";
 
 
 export const metadata: Metadata = {
@@ -20,7 +23,9 @@ export default function RootLayout({
         className="container mx-auto mt-12"
       >
         <BreadcrumbsProvider>
-          {children}
+          <MainLayout>
+            {children}
+          </MainLayout>
         </BreadcrumbsProvider>
       </body>
     </html>
