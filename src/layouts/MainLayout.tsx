@@ -7,18 +7,20 @@ import {
   Breadcrumb,
 } from "@/utils/breadcrumb";
 import { notesNav } from '@/constants';
-import { useRouter } from 'next/navigation'
-
+import { useRouter, useSearchParams } from 'next/navigation'
 
 
 export const MainLayout = ({ children }: any) => {
   const router = useRouter()
+  const searchParams = useSearchParams()
   const initialSelected = Object.values(notesNav)[0][0] // get first item in an object
 
   const gotoItem = (item: any) => {    
     // [book]/[chapter]
     router.push(`/${item.bookId}/${item.id}`)
   }
+
+  console.log(useSearchParams().get('bookId'))
 
 
   return (

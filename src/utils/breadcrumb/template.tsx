@@ -29,4 +29,6 @@ export const UseBreadcrumb = ({pathItems}: any) => {
 
     return () => context.setPathItems([])
   })
+
+  return <></>
 }
