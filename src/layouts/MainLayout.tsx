@@ -13,16 +13,15 @@ import { useRouter, useParams } from 'next/navigation'
 export const MainLayout = ({ children }: any) => {
   const router = useRouter()
   const params = useParams()
-  const initialSelected = Object.values(notesNav)[0][0] // get first item in an object
+
+  const findBook = notesNav[params.book as string]
+  const findChapter = findBook?.find((item: any) => item.id === params.chapter)
 
   const gotoItem = (item: any) => {    
     // [book]/[chapter]
     router.push(`/${item.bookId}/${item.id}`)
   }
   
-  const findBook = notesNav[params.book as string]
-  const findChapter = findBook?.find((item: any) => item.id === params.chapter)
-
 
   return (
     <div className="grid grid-cols-12 gap-4">

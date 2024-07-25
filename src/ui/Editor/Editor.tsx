@@ -22,7 +22,7 @@ export const Editor = ({ defaultValue }: EditorProps) => {
   useEffect(() => {
     console.log('note--- ')
     console.log(value)
-  }, [defaultValue])
+  }, [value])
 
   // Editor ref
   const quill = useRef() as any;

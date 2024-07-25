@@ -10,6 +10,14 @@ const config: Config = {
     "./src/ui/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/utils/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+    {pattern: /bg-./},
+    {pattern: /text-./},
+    {pattern: /border-./},
+    {pattern: /grid-./},
+    {pattern: /col-span-./},
+    {pattern: /grid/},
+  ],
   theme: {
     extend: {
       backgroundImage: {

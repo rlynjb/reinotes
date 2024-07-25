@@ -38,7 +38,7 @@ export default function Home() {
   useEffect(() => {
     // redirect to first item in notesNav
     router.push(`/${initialSelected.bookId}/${initialSelected.id}`)
-  }, [])
+  }, [initialSelected, router])
   
 
   const pathItems = [
