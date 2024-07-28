@@ -1,14 +1,13 @@
 "use client";
 
 // Importing helper modules
-import { useRef, useState, useEffect } from "react";
-
-// Importing core components
-import QuillEditor from "react-quill";
+import { useState, useMemo } from "react";
 
 // Importing styles
 import "react-quill/dist/quill.snow.css";
 import styles from "./styles.module.css";
+
+import dynamic from "next/dynamic";
 
 
 interface EditorProps {
@@ -19,13 +18,12 @@ export const Editor = ({ defaultValue }: EditorProps) => {
   // Editor state
   const [value, setValue] = useState(defaultValue);
 
-  useEffect(() => {
-    console.log('note--- ')
-    console.log(value)
-  }, [value])
-
-  // Editor ref
-  const quill = useRef() as any;
+  /*
+    NOTE:
+    import react-quill this way because of document is not defined error
+    ref: https://stackoverflow.com/questions/73047747/error-referenceerror-document-is-not-defined-nextjs
+  */
+  const ReactQuill = useMemo(() => dynamic(() => import('react-quill'), { ssr: false }),[]);
 
   const modules = {
     toolbar: {
@@ -57,10 +55,7 @@ export const Editor = ({ defaultValue }: EditorProps) => {
   ];
 
   return (
-    <QuillEditor
-      ref={(el) => {
-        quill.current = el;
-      }}
+    <ReactQuill
       className={styles["editor"]}
       theme="snow"
       value={value}

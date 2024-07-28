@@ -33,7 +33,7 @@ export const ViewChapterNotes = (props: any) => {
       >
         {(customRows: any) => customRows.map((item: any, index: number) =>
           <tr key={index}>
-            <td className="align-text-top min-w-96">
+            <td className="align-text-top">
               {item.problem ? item.problem : ''}
             </td>
             <td className="align-text-top">

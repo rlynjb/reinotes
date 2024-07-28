@@ -1,5 +1,5 @@
 import { FC } from 'react';
-//import { Editor } from '@/ui/Editor';
+import { Editor } from '@/ui/Editor';
 
 
 interface Props {
@@ -35,11 +35,11 @@ export const ViewNote: FC<Props> = ({title, sample = ``, desc = ''}: Props) => {
         <pre>
           {sample}
         </pre>
-        {/**
+        
         <Editor
           defaultValue={desc}
         />
-         */}
+        
       </div>
     </div>
   )
