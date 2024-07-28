@@ -5,16 +5,10 @@ export const C11_MANAGING_DATA = [
     `,
     title: "Context API",
     desc: `
-    The Context API allows you to share data between components without having to pass a prop to every child component.
-    <br>
-    It's also super useful when you want to separate your application from you data and do all the fetching in there.
-    <br>
-    There are multiple uses for the Context API, which can also be used for theming or to pass functions; it all depends on your application.
-    `,
-    sample: `
-    // Create a context
+    <p>The Context API allows you to share data between components without having to pass a prop to every child component.</p><p>It's also super useful when you want to separate your application from you data and do all the fetching in there.</p><p>There are multiple uses for the Context API, which can also be used for theming or to pass functions; it all depends on your application.</p><p><br></p><pre class="ql-syntax" spellcheck="false">// Create a context
     import { FC, createContext, useState, useEffect, ReactElement, useCallback } from 'react';
     import axios from 'axios';
+
 
     // Declare interfaces
     export type Issue = {
@@ -31,24 +25,27 @@ export const C11_MANAGING_DATA = [
       url: string
     }
 
+
     // Now, create a context using createContext function
     // and defining the value we want ot export
-    export const IssueContext = createContext<Issue_Context>({ issues: [], url: '' });
+    export const IssueContext = createContext&lt;Issue_Context&gt;({ issues: [], url: '' });
+
 
     // Create a component where we can receive props, set states,
     // perform fetch by using useEffect and render IssueContext.Provider
-    const IssueProvider: FC<Props> = ({ children, url }) => {
+    const IssueProvider: FC&lt;Props&gt; = ({ children, url }) =&gt; {
       // State
-      const [issues, setIssues] = useState<Issue[]>([]);
-      const fetchIssues = useCallback(async () => {
+      const [issues, setIssues] = useState&lt;Issue[]&gt;([]);
+      const fetchIssues = useCallback(async () =&gt; {
         const response = await axios(url);
         if (response) {
           setIssues(response.data);
         }
       }, [url])
 
+
       // Effects
-      useEffect(() => {
+      useEffect(() =&gt; {
         // GOOD PRACTICE:
         // everytime we use function inside useEffect,
         // we need to wrap function in useCallback hook
@@ -56,6 +53,7 @@ export const C11_MANAGING_DATA = [
         // separate function and not directly in useEffect.
         fetchIssues();
       }, [fetchIssues]);
+
 
       // NOTE:
       // once we perform fetch and get data in issues state,
@@ -65,31 +63,32 @@ export const C11_MANAGING_DATA = [
         url,
       }
 
+
       // NOTE:
       // when we render IssueContext.Provider, we will pass
       // the context on value prop,
       // and finally, render children of component.
       return (
-        <IssueContext.Provider value={context}>
+        &lt;IssueContext.Provider value={context}&gt;
           {children}
-        </IssueContext.Provider>
+        &lt;/IssueContext.Provider&gt;
       )
     }
     export default IssueProvider;
+</pre>
     `
   },
   {
     problem: "how do we make Context available to our components?",
     title: "Wrapping our components with the provider",
-    desc: `Continuing with previous topic, this code will be added to main component of app (normally, all providers are defined in parent components)`,
-    sample: `
-    // Import the IssueProvider component
+    desc: `
+    <p>Continuing with previous topic, this code will be added to main component of app (normally, all providers are defined in parent components)</p><p><br></p><pre class="ql-syntax" spellcheck="false">// Import the IssueProvider component
     // Providers
     import IssueProvider from '../contexts/Issue';
     // Components
     import Issues from './Issues';
 
-    const App = () => {
+    const App = () =&gt; {
 
       // NOTE:
       // we wrap Issues component with IssueProvider.
@@ -98,12 +97,13 @@ export const C11_MANAGING_DATA = [
       // the challenging aspect is that, we might not receive an error message;
       // instead, you will encounter undefined data.
       return (
-        <IssueProvider url="https://api.github.com/repos/ContentAPI/issues">
-          <Issues />
-        </IssueProvider>
+        &lt;IssueProvider url="https://api.github.com/repos/ContentAPI/issues"&gt;
+          &lt;Issues /&gt;
+        &lt;/IssueProvider&gt;
       )
     }
     export default App;
+</pre>
     `
   },
   {
@@ -111,27 +111,30 @@ export const C11_MANAGING_DATA = [
     title: "Consuming context with useContext",
     desc: `This step will require us to wrap our main component with the provider.`,
     sample: `
-    // Dependencies
+    <p>This step will require us to wrap our main component with the provider.</p><p><br></p><pre class="ql-syntax" spellcheck="false">// Dependencies
     import { FC, useContext } from 'react';
     // Contexts
     import { IssueContext, Issue } from '../contexts/Issue';
 
-    const Issues: FC = () => {
+
+    const Issues: FC = () =&gt; {
       // Here you consume your Context, and you can grab the issues value.
-      const { issues, url } = useContext<Issue>(IssueContext);
+      const { issues, url } = useContext&lt;Issue&gt;(IssueContext);
+
 
       return (
-        <>
-          <h1>Issues</h1>
-          {issues.map((issue: Issue) => (
-            <p key={issue.number}>
-              <a href={issue.url}>{issue.title}</a>
-            </p>
+        &lt;&gt;
+          &lt;h1&gt;Issues&lt;/h1&gt;
+          {issues.map((issue: Issue) =&gt; (
+            &lt;p key={issue.number}&gt;
+              &lt;a href={issue.url}&gt;{issue.title}&lt;/a&gt;
+            &lt;/p&gt;
           ))}
-        </>
+        &lt;/&gt;
       )
     }
     export default Issues;
+</pre>
     `
   },
   {

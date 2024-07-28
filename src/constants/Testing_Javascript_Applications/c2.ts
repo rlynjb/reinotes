@@ -101,18 +101,15 @@ export const C2 = [
     problem: "How do we organize our code?",
     title: "By using test runners/frameworks like Jest",
     desc: `
-    They enable you to organize and run multiple tests in a comprehensive manner, providing meaningful and easily readable results.
-    <br>
-    they also provide Assertion library (Jest matchers, etc).
-    `,
-    sample: `
-    // Code below, we are using Jest to organize test with namespace (test())
+    <p>They enable you to organize and run multiple tests in a comprehensive manner, providing meaningful and easily readable results.</p><p>they also provide Assertion library (Jest matchers, etc).</p><p><br></p><pre class="ql-syntax" spellcheck="false">// Code below, we are using Jest to organize test with namespace (test())
     // and using Jest build-in assertion methods (expect().equalTo())
+
 
     const Cart = require("./Cart.js")
 
+
     // encapsulate teh first test into a diff namespace, isolating its variables and producing more readable output
-    test("the addToCart function can add an item to the cart", () => {
+    test("the addToCart function can add an item to the cart", () =&gt; {
       // Arrange: create an empty cart
       const cart = new Cart()
       // Act: exercieses the addToCart function
@@ -121,8 +118,9 @@ export const C2 = [
       expect.toEqual(cart.items, ["cheesecake"])
     })
 
+
     // encapsulates the 2nd test into a diff namespace
-    test("The removeFromCart function can remove an item from the cart", () => {
+    test("The removeFromCart function can remove an item from the cart", () =&gt; {
       // Arrange: creates an empty cart and adds an item to it
       const cart = new Cart()
       cart.addToCart("cheesecake")
@@ -131,6 +129,7 @@ export const C2 = [
       // Assert: checks whether the cart is empty
       expect.toEqual(cart.items, [])
     })
+</pre>
     `
   },
   {
@@ -163,10 +162,9 @@ export const C2 = [
     problem: "How do we get started with Integration testing?",
     title: "a classic example of integration test is talking to a database.",
     desc: `
-    `,
-    sample: `
-    // knex is a query builder that interface with sqlite3 db
+    <pre class="ql-syntax" spellcheck="false">// knex is a query builder that interface with sqlite3 db
     npm install --save knex sqlite3
+
 
     // knexfile.js
     module.exports = {
@@ -177,6 +175,7 @@ export const C2 = [
       }
     }
 
+
     /*
       when using Knex, you define the structure of your tables thru "migrations".
       Knex uses a db table to keep track of the migrations that havealready run and the new ones.
@@ -184,92 +183,106 @@ export const C2 = [
       sample code below:
     */
 
+
     // CURRENTTIMESTAMP_create_carts.js
     // the exported up function migrates the db to the next state
-    exports.up = async knex => {
+    exports.up = async knex =&gt; {
       // creates a table for the app's carts containing a username column and id column that autoincrements
-      await knex.schema.createTable("carts", table => {
+      await knex.schema.createTable("carts", table =&gt; {
         table.increments("id")
         table.string("username")
       })
 
+
       // creates a carts_items table that will keep track of the items in each cart
-      await knex.schema.createTable("carts_items", table => {
+      await knex.schema.createTable("carts_items", table =&gt; {
         // creates a cartId column that references a cart's id in the carts table
         table.integer("cartId").references("carts.id")
         table.string("itemName")
       })
     }
 
+
     // teh exported down function migrates teh db to the previous state,
     // deleting teh carts and carts_items tables
-    exports.dowm = async knex => {
+    exports.dowm = async knex =&gt; {
       await knex.schema.dropTable("carts")
       await knex.schema.dtopTable("carts_items")
     }
+</pre>
     `
   },
   {
     problem: "How do we connect Knex with SQLite3 db?",
     title: "by creating a module with methods to add (CRUD, etc) items to SQLite db",
-    desc: ``,
-    sample: `
-    // Finally, we can create a module with methods to add items to SQLite db
+    desc: `
+    <pre class="ql-syntax" spellcheck="false">// Finally, we can create a module with methods to add items to SQLite db
     // dbConnection.js
+
 
     // sets up a connection pool for the development db
     const db = require("knex")(require("./knexfile").development)
     // tears down the connection pool
-    const closeConnection = () => db.destroy()
+    const closeConnection = () =&gt; db.destroy()
+
 
     module.exports = {
       db,
       closeConnection
     }
+</pre>
     `
   },
   {
     problem: "How do we use Knex with SQLite3 db in our code and test file?",
     title: "code sample!!",
-    desc: ``,
-    sample: `
-    // cart.js
+    desc: `
+    <pre class="ql-syntax" spellcheck="false">// cart.js
     const { db } = require("./dbConnection")
 
-    const createCart = username => {
+
+    const createCart = username =&gt; {
       // inserts a row in the carts table
       return db("carts").insert({ username })
     }
 
-    const addItem = (cartId, itemName) => {
+
+    const addItem = (cartId, itemName) =&gt; {
       // inserts a row in teh carts_items table referencing teh cartId passed
       return db("carts_items").insert({ cartId, itemName })
     }
+
 
     module.exports = {
       createCart,
       addItem
     }
 
+
     // cart.test.js
     const { db, closeConnection } = require("./dbConnection")
     const { createCart, addItem } = require("./cart")
 
-    beforeEach(async () => {
+
+    beforeEach(async () =&gt; {
       // Arrange: clears the carts and carts_items tables before each test
       await db("carts_items").truncate()
       await db("carts").truncate()
     })
 
-    // tears down the connection pool
-    afterAll(async () => await closeConnection())
 
-    test("createCart creates a cart for a username", async () => {
+    // tears down the connection pool
+    afterAll(async () =&gt; await closeConnection())
+
+
+    test("createCart creates a cart for a username", async () =&gt; {
       // Arrange
       await createCart("Lucas da Costa")
 
+
       // Act: selects value in teh username column for all the items in teh carts table
       const result = await db.select("username").from("carts")
+
 
       // Assert
       expect(result).toEqual([
@@ -277,10 +290,12 @@ export const C2 = [
       ])
     })
 
-    test("addItem adds an item to a cart", async () => {
+
+    test("addItem adds an item to a cart", async () =&gt; {
       // Arrange
       const username = "Lucas da Costa"
       await createCart(username)
+
 
       // Act
       const { id: cartId } = await db
@@ -288,7 +303,9 @@ export const C2 = [
         .from("carts")
         .where({ username }) //selects all teh rows int the carts table whose username column matches the username used for the test
 
+
       await addItem(cartId, "cheesecake")
+
 
       // Assert
       const result = await db.select("itemName").from("carts_items")
@@ -299,6 +316,7 @@ export const C2 = [
         }
       ])
     })
+</pre>
     `
   }
 ]

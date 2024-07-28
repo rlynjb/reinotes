@@ -31,11 +31,6 @@ export const ViewNote: FC<Props> = ({title, sample = ``, desc = ''}: Props) => {
         {title}
       </div>
       <div className="collapse-content">
-        {desc}
-        <pre>
-          {sample}
-        </pre>
-        
         <Editor
           defaultValue={desc}
         />

@@ -29,10 +29,8 @@ export const C1 = [
     problem: "How do we Create, Update, Delete data on server?",
     title: "Mutations",
     desc: `
-    A mutation is a way to Create, Update, or Delete data on the server. A mutation is similar to a query in that it requests data from the server, but unlike a Query, a mutation also makes changes to the data.
-    `,
-    sample: `
-    // Use the keyword 'mutation' and name the mutation
+    <p>A mutation is a way to Create, Update, or Delete data on the server. A mutation is similar to a query in that it requests data from the server, but unlike a Query, a mutation also makes changes to the data.</p><p><br></p><pre class="ql-syntax" spellcheck="false">// Use the keyword 'mutation' and name the mutation
+
 
     mutation {
       createUser(name: "John Doe", email: "john.doe@example.com") {
@@ -42,29 +40,21 @@ export const C1 = [
       }
     }
 
+
     // The response contains the data for the mutation createUser.
     // The data is wrapped in a data key. The mutation name i.e. 'createUser'
     // is used as the key to access the data.
-    `
+</pre>
+  `
   },
   {
     problem: "How do we ensure the data is correct and valid?",
     title: "Schemas and Types",
     desc: `
-    GraphQL is a stringly typed language. This means that every piece of data returned by <br>
-    a GraphQL server has a predictable type. This is defined by the schema 'SDL'.
-    <br><br>
-    SDL specifies all the fields and its type. Being strongly typed makes GraphQL:
-    <br>
-    - less error prone. <br>
-    - queries/mutations can be validated during compile-time <br>
-    - IDEs can provide auto-completion and validation for creating queries
-    <br><br>
-    `,
-    sample: `
-    // The most basic component of a GraphQL schema is the object type.
+    <p>GraphQL is a stringly typed language. This means that every piece of data returned by</p><p>a GraphQL server has a predictable type. This is defined by the schema 'SDL'.</p><p><br></p><p>SDL specifies all the fields and its type. Being strongly typed makes GraphQL:</p><p>- less error prone.</p><p>- queries/mutations can be validated during compile-time</p><p>- IDEs can provide auto-completion and validation for creating queries</p><p><br></p><pre class="ql-syntax" spellcheck="false">// The most basic component of a GraphQL schema is the object type.
     // For eg. we have the User type in the previous example which
     // can be defined as:
+
 
     type User {
       id: ID!
@@ -73,7 +63,9 @@ export const C1 = [
       phone: String
     }
 
+
     // To Note: There is also Query type and Mutation type
+</pre>
     `
   }
 ]
